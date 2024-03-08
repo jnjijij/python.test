@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Autos</h1>
+  <a href="{% url 'reports:report_list' %}">View Reports</a>
+  {% for auto in autos %}
+    <h2>{{ auto.make }} {{ auto.model }}</h2>
+    <p>Year: {{ auto.year }}</p>
+    <p>Mileage: {{ auto.mileage }}</p>
+    <p>Price: ${{ auto.price }}</p>
+    <p>Description: {{ auto.description }}</p>
+    <a href="{% url 'autos:auto_detail' auto.id %}">View Details</a>
+    <a href="{% url 'reports:report_delete_all' auto.id %}">Delete All Reports</a>
+  {% endfor %}
+{% endblock %}
